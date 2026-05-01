@@ -47,7 +47,7 @@ No limitations that I found.
 
 | Config                       | Description                                                                              | Default value                       | Required                    |
 | ---------------------------- | ---------------------------------------------------------------------------------------- | ----------------------------------- | --------------------------- |
-| `enable_prometheus`          | Enable sending metrics to Prometheus. If enabled, prometheus_write_endpoint is required. | true                                | No                          |
+| `enable_prometheus`          | Enable sending metrics to Prometheus. If enabled, prometheus_write_endpoint is required. | false                               | No                          |
 | `prometheus_write_endpoint`  | Full URL to send metrics to.                                                             | http://prometheus:9090/api/v1/write | If `enable_prometheus`=true |
 | `enable_unix_component`      | Enables prometheus.exporter.unix component to collect node_exporter metrics.             | true                                | No                          |
 | `enable_process_component`   | Enables prometheus.exporter.process component to collect process_exporter metrics.       | true                                | No                          |
@@ -69,8 +69,8 @@ If `override_config` is true and a valid Alloy config file is supplied in `overr
 ## Todo
 
 - [x] Add more customization options (Enable/disable components, scrape_interval, etc..)
-- [ ] Add Github workflows
-- [ ] Build and publish a docker image so users don't have to build the image on every install
+- [x] Add Github workflows
+- [x] Build and publish a docker image so users don't have to build the image on every install
 - [x] Verify all permissions added to `config.yaml` are required and remove unneeded ones
 
 ## Example Data

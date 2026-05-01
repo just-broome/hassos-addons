@@ -20,8 +20,7 @@ journald: true
 host_network: true
 host_pid: true
 map:
-  - type: homeassistant_config
-    path: /config
+  - homeassistant_config
 
 options:
   enable_prometheus: false

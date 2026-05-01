@@ -9,7 +9,7 @@ OVERRIDE_CONFIG=$(bashio::config 'override_config_path')
 if bashio::config.false 'override_config'; then
     CONFIG_FILE=/etc/alloy/config.alloy
 else
-    CONFIG_FILE=$OVERRIDE_CONFIG
+    CONFIG_FILE=/data/override_config.alloy
 fi
 bashio::log.info "Starting Grafana Alloy with ${CONFIG_FILE}"
 bashio::log.info "$(cat ${CONFIG_FILE})"

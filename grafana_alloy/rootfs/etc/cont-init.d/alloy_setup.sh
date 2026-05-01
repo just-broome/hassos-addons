@@ -8,6 +8,8 @@ readonly CONFIG_TEMPLATE="${CONFIG_DIR}/config.alloy.template"
 if bashio::config.true 'override_config'; then
     if bashio::config.is_empty 'override_config_path'; then
         bashio::config.require 'override_config_path' "Config override is Enabled, must set override_config_path"
+    else
+        cp "$(bashio::config 'override_config_path')" /data/override_config.alloy
     fi
 else
     # Add Prometheus Write Endpoint

@@ -7,6 +7,10 @@ on:
     paths:
       - 'grafana_alloy/**'
       - '.github/workflows/build.yml'
+  pull_request:
+    paths:
+      - 'grafana_alloy/**'
+      - '.github/workflows/build.yml'
   workflow_dispatch:
 
 permissions:

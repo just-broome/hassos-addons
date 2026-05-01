@@ -3,7 +3,7 @@ name: "Grafana Alloy"
 description: "Grafana Alloy"
 version: "0.1.0"
 slug: "grafana_alloy"
-image: "ghcr.io/just-broome/hassos-addons/grafana_alloy:latest"
+image: "ghcr.io/just-broome/hassos-addons/grafana_alloy"
 init: true
 startup: services
 boot: auto

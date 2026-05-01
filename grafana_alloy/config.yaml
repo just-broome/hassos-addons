@@ -8,7 +8,6 @@ init: true
 startup: services
 arch:
   - aarch64
-  - amd64
 ports:
   12345/tcp:
   5514/udp:

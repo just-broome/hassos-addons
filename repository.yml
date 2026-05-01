@@ -1,4 +1,4 @@
 # https://developers.home-assistant.io/docs/add-ons/repository#repository-configuration
-name: just-broome Home Assistant Add-Ons
+name: just-broome Home Assistant Alloy Add-On
 url: 'https://github.com/just-broome/hassos-addons'
 maintainer: just-broome

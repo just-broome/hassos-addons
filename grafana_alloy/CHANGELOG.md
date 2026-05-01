@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.0] - 2026-05-01
+
+- Bump Grafana Alloy version from 1.12.2 to [1.16.0](https://github.com/grafana/alloy/releases/tag/v1.16.0)
+- Add GitHub Actions workflow for automated multi-arch Docker image builds and publishing to GHCR
+- Disable Prometheus by default (users can enable or provide custom config via `override_config`)
+- Update add-on to build and publish custom images to `ghcr.io/just-broome/hassos-addons/grafana_alloy`
+
 ## [0.0.8] - 2026-01-26
 
 - Bump Grafana Alloy version to [1.12.2](https://github.com/grafana/alloy/releases/tag/v1.12.2)

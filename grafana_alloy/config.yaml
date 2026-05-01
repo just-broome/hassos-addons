@@ -6,6 +6,7 @@ slug: "grafana_alloy"
 image: "ghcr.io/just-broome/hassos-addons/grafana_alloy:latest"
 init: true
 startup: services
+boot: auto
 arch:
   - aarch64
 ports:
@@ -29,6 +30,7 @@ options:
   enable_process_component: true
   prometheus_scrape_interval: 15s
   servername_tag: "HomeAssistant"
+  instance_tag: ""
   enable_loki: false
   loki_endpoint: http://loki:3100/api/v1/push
   enable_loki_syslog: false

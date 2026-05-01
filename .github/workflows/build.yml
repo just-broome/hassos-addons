@@ -25,11 +25,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Extract Alloy version
+      - name: Extract versions
         id: version
         run: |
-          VERSION=$(grep 'GRAFANA_ALLOY_VERSION=' grafana_alloy/Dockerfile | sed 's/.*GRAFANA_ALLOY_VERSION="\(.*\)".*/\1/')
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          ALLOY_VERSION=$(grep 'GRAFANA_ALLOY_VERSION=' grafana_alloy/Dockerfile | sed 's/.*GRAFANA_ALLOY_VERSION="\(.*\)".*/\1/')
+          ADDON_VERSION=$(grep '^version:' grafana_alloy/config.yaml | sed 's/version: *"\(.*\)"/\1/')
+          echo "alloy_version=$ALLOY_VERSION" >> $GITHUB_OUTPUT
+          echo "addon_version=$ADDON_VERSION" >> $GITHUB_OUTPUT
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -51,11 +53,12 @@ jobs:
           push: true
           platforms: linux/arm64
           tags: |
-            ghcr.io/just-broome/hassos-addons/grafana_alloy:${{ steps.version.outputs.version }}
+            ghcr.io/just-broome/hassos-addons/grafana_alloy:${{ steps.version.outputs.addon_version }}
+            ghcr.io/just-broome/hassos-addons/grafana_alloy:${{ steps.version.outputs.alloy_version }}
             ghcr.io/just-broome/hassos-addons/grafana_alloy:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
           build-args: |
             BUILD_FROM=ghcr.io/hassio-addons/debian-base/aarch64:9.1.0
             BUILD_ARCH=aarch64
-            BUILD_VERSION=${{ steps.version.outputs.version }}
+            BUILD_VERSION=${{ steps.version.outputs.addon_version }}

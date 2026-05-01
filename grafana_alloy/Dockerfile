@@ -15,7 +15,8 @@ RUN apt-get update && \
   apt-get install -y --no-install-recommends \
         unzip \
         gettext-base \
-        curl && \
+        curl \
+        libsystemd0 && \
     rm -rf /var/lib/apt/lists/* && \
     apt clean && \
     ARCH="${BUILD_ARCH}" && \

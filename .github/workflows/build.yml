@@ -52,6 +52,6 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           build-args: |
-            BUILD_FROM=ghcr.io/home-assistant/aarch64-base:latest
+            BUILD_FROM=ghcr.io/hassio-addons/debian-base/aarch64:9.1.0
             BUILD_ARCH=aarch64
             BUILD_VERSION=${{ steps.version.outputs.version }}

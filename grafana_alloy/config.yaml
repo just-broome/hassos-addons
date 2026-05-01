@@ -4,6 +4,8 @@ description: "Grafana Alloy"
 version: "0.1.0"
 slug: "grafana_alloy"
 image: "ghcr.io/just-broome/hassos-addons/grafana_alloy:latest"
+init: true
+startup: services
 arch:
   - aarch64
   - amd64

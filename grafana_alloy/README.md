@@ -12,7 +12,7 @@ Currently, this add-on supports the following components:
 
 ## Installation
 
-1. Add [repository](https://github.com/wymangr/hassos-addons) to Home Assistant.
+1. Add [repository](https://github.com/just-broome/hassos-addons) to Home Assistant.
 1. Search for "Grafana Alloy" in the Home Assistant add-on store and install it.
 1. Disable "Protection mode" in the add-on panel. (Optional, [see below for more details](#protection-mode))
 1. Update configuration on the add-on "Configuration" Tab. See options below.

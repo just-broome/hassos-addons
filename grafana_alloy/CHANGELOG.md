@@ -2,7 +2,9 @@
 
 ## [0.1.0] - 2026-05-01
 
-- Bump Grafana Alloy version from 1.12.2 to [1.16.0](https://github.com/grafana/alloy/releases/tag/v1.16.0)
+- Forked [https://github.com/wymangr/hassos-addons](https://github.com/wymangr/hassos-addons) to [https://github.com/just-broome/hassos-addons](https://github.com/just-broome/hassos-addons)
+- Bump Grafana Alloy version from `1.12.2` to [`1.16.0`](https://github.com/grafana/alloy/releases/tag/v1.16.0)
+- Bump base image from `9.1.0` to `9.3.0`
 - Add GitHub Actions workflow for automated multi-arch Docker image builds and publishing to GHCR
 - Disable Prometheus by default (users can enable or provide custom config via `override_config`)
 - Update add-on to build and publish custom images to `ghcr.io/just-broome/hassos-addons/grafana_alloy`

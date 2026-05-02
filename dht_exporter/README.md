@@ -18,7 +18,7 @@ dht_exporter_error_total
 
    <img src="images/dht_raspberry_pi_diagram.jpg" alt="dht_raspberry_pi_diagram" width="500"/>
 
-1. Add [repository](https://github.com/wymangr/hassos-addons) to Home Assistant.
+1. Add [repository](https://github.com/just-broome/hassos-addons) to Home Assistant.
 1. Search for "DHT Exporter" in the Home Assistant add-on store and install it.
 1. Update configuration on the add-on "Configuration" Tab. See options below.
 1. Update port in under "Network" on the "Configuration" tab if needed accessible externally.

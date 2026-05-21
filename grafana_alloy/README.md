@@ -59,6 +59,7 @@ No limitations that I found.
 | `enable_loki_syslog`         | Listen for syslog messages over UDP or TCP connections and forwards them to loki.        | false                               | No                          |
 | `override_config`            | If enabled, all other options will be ignored and you can supply your own Alloy config.  | false                               | No                          |
 | `override_config_path`       | Path to Override Alloy config file. HA config directory is counted to /config.           | /config/alloy/example.alloy         | If `override_config`=true   |
+| `ha_prometheus_token`        | Long-lived HA access token for scraping `/api/prometheus`. Set to `!secret <key>` to pull from `/config/secrets.yaml`. Exported as `HA_PROMETHEUS_TOKEN` env var for use in override configs. | (empty) | No |
 
 If `override_config` is true and a valid Alloy config file is supplied in `override_config_path`, all other options will be ignored.
 

@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.1.1] - 2026-05-21
+
+- Add `ha_prometheus_token` option (`password?` type — masked in UI, optional) for supplying a Home Assistant long-lived access token to Alloy override configs
+- Export `HA_PROMETHEUS_TOKEN` env var in the service run script so override configs can reference it via `env("HA_PROMETHEUS_TOKEN")`
+- Follows standard HA addon secret pattern: set option to `!secret <key>` in HA UI; supervisor resolves from `/config/secrets.yaml` transparently
+
 ## [0.1.0] - 2026-05-01
 
 - Forked [https://github.com/wymangr/hassos-addons](https://github.com/wymangr/hassos-addons) to [https://github.com/just-broome/hassos-addons](https://github.com/just-broome/hassos-addons)

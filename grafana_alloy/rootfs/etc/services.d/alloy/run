@@ -14,5 +14,10 @@ fi
 bashio::log.info "Starting Grafana Alloy with ${CONFIG_FILE}"
 bashio::log.info "$(cat ${CONFIG_FILE})"
 
+# Export addon secrets as env vars for Alloy config files
+if bashio::config.has_value 'ha_prometheus_token'; then
+    export HA_PROMETHEUS_TOKEN="$(bashio::config 'ha_prometheus_token')"
+fi
+
 # Run Alloy
 exec /usr/local/bin/alloy run --server.http.listen-addr=0.0.0.0:12345 --disable-reporting --storage.path=/data $CONFIG_FILE

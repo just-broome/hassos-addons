@@ -1,7 +1,7 @@
 ---
 name: "Grafana Alloy"
 description: "Grafana Alloy"
-version: "0.1.0"
+version: "0.1.1"
 slug: "grafana_alloy"
 image: "ghcr.io/just-broome/hassos-addons/grafana_alloy"
 init: true
@@ -36,6 +36,7 @@ options:
   enable_loki_syslog: false
   override_config: false
   override_config_path: "/homeassistant/alloy/example.alloy"
+  ha_prometheus_token: ""
 schema:
   enable_prometheus: bool
   prometheus_write_endpoint: str?
@@ -49,3 +50,4 @@ schema:
   enable_loki_syslog: bool
   override_config: bool
   override_config_path: str?
+  ha_prometheus_token: password?

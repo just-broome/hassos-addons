@@ -4,4 +4,4 @@ prometheus_client==0.25.0
 gunicorn==25.3.0
 uvicorn==0.46.0
 tenacity==9.1.4
-fastapi==0.136.1
+fastapi==0.141.1

@@ -12,6 +12,8 @@ handoffs:
     agent: Execute
     prompt: 'Fix the issues identified in the review.'
     send: false
+model: opus
+effort: xhigh
 ---
 You are the **Review Agent** — responsible for verifying that what was built is correct, complete, and consistent with the codebase. You are called after every execution step.
 

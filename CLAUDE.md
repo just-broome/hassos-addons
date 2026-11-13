@@ -34,7 +34,7 @@ grafana_alloy/
   workflows/           # CI: build and publish to GHCR on push to main
   PULL_REQUEST_TEMPLATE.md
 .claude/
-  agents/              # 14-agent Claude Code pipeline
+  agents/              # six-agent Claude Code pipeline
 ```
 
 ---
@@ -57,32 +57,26 @@ Changes should stay within `grafana_alloy/` and `.github/workflows/` unless ther
 
 ## Agent Pipeline
 
-A 14-agent pipeline lives in `.claude/agents/`. Use it for any non-trivial task.
+Six agents live in `.claude/agents/`. Use them for any non-trivial task. The Orchestrator picks a flow by risk and runs a brief from start to PR.
 
 ### Pipeline Flow
 
 ```
-Git (branch) → Memory → Router → Research → Plan
-  → [per subtask] Test → Execute → Debug? → Review → Critic?
-→ E2E → Critic (final) → Docs → Git (PR) → Summarize
+Research? → Build → Review → Critic? → PR
 ```
 
 ### Agent Reference
 
-| Agent | When to use directly |
-|---|---|
-| **Orchestrator** | Hand it a task and let the full pipeline run |
-| **Plan** | Research and plan a task before any implementation |
-| **Research** | Investigate a codebase area, error, or dependency |
-| **Execute** | Implement a specific, well-defined subtask |
-| **Test** | Write failing tests before implementation (TDD) |
-| **Review** | Check a piece of work against acceptance criteria |
-| **Critic** | Adversarial review — security, edge cases, failure modes |
-| **Debug** | Diagnose an unknown error or flaky test |
-| **E2E** | Write integration and end-to-end tests for a completed feature |
-| **Docs** | Write inline comments, READMEs, changelogs, or ADRs |
-| **Git** | Create a branch, write a commit message, or open a PR |
-| **Summarize** | Produce a clean summary of completed work |
+| Agent | Model | Effort | Job |
+|---|---|---|---|
+| **Orchestrator** | opus | – | Reads the brief, picks the flow, writes the short plan, delegates, reports the PR |
+| **Research** | opus | xhigh | Answers only the unknowns the brief lists; writes the research doc |
+| **Build** | opus | medium | Code, tests by policy, docs where behaviour changed, commits, PR, host runs the brief allows |
+| **Review** | opus | xhigh | One pass: the diff, the repo checks (`make lint`, `make test`), the acceptance criteria, over-testing |
+| **Critic** | fable | – | Risky changes only |
+| **Debug** | opus | – | On demand, for a failure with no clear cause |
+
+Models are aliases. On the Anthropic API, `opus` is Opus 5.5 and `fable` is Fable 5.2 (`claude-fable-5-2`). Effort comes from the `effort:` frontmatter key (low, medium, high, xhigh, max); with no key the agent uses the session level, or the model default when its model differs from the session's. Other providers can map the aliases to older models; pin a full model ID there.
 
 ---
 
@@ -90,17 +84,17 @@ Git (branch) → Memory → Router → Research → Plan
 
 ### New addon option
 ```
-Plan → Execute → Docs (README + CHANGELOG) → Git (PR)
+Research? → Build (option, README + CHANGELOG) → Review → PR
 ```
 
 ### Bug fix
 ```
-Research → Execute → Review → Git (PR)
+Research → Build → Review → PR
 ```
 
 ### Version bump / release prep
 ```
-Docs (CHANGELOG) → Execute (config.yaml version) → Git (PR)
+Build (CHANGELOG + config.yaml version) → PR
 ```
 
 ---
